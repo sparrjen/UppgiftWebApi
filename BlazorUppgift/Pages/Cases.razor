@@ -1,0 +1,45 @@
+﻿@page "/cases"
+
+
+<h1>All cases</h1>
+
+
+@if (cases == null)
+{
+<p><em>No cases found</em></p> }
+            else
+            {
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Customer</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var c in cases)
+            {
+                <tr>
+                    <td>@c.Id</td>
+                    <td>@c.Customer.DisplayName</td>
+                    <td>@c.CaseStatus</td>
+                    <td>@c.CaseDate</td>
+                    <td>@c.CaseDescription</td>
+                </tr>}
+            </tbody>
+    </table>}
+
+
+@code {
+    private IEnumerable<Case> cases;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Http.DefaultRequestHeaders.Add("Authorization", $"Bearer {await sessionStorage.GetItemAsync<string>("accessToken")}");
+        cases = await Http.GetFromJsonAsync<IEnumerable<Case>>("https://localhost:44395/api/cases");
+    }
+
+}

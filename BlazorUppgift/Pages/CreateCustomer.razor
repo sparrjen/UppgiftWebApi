@@ -45,7 +45,9 @@
 
     private async Task CreateCustomerAsync()
     {
-        Http.DefaultRequestHeaders.Add("Authorization", $"Bearer {await sessionStorage.GetItemAsync<string>("accessToken")}");
+        if (!Http.DefaultRequestHeaders.Any()) {
+            Http.DefaultRequestHeaders.Add("Authorization", $"Bearer {await sessionStorage.GetItemAsync<string>("accessToken")}"); }
+
         var response = await Http.PostAsJsonAsync<Customer>("https://localhost:44395/api/Customers", model);
         model = new Customer();
 
