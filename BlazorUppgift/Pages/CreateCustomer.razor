@@ -1,0 +1,54 @@
+﻿@page "/createcustomer"
+<Auth />
+<h3>Create a customer</h3>
+
+
+
+<EditForm Model="model" OnValidSubmit="CreateCustomerAsync">
+    <div class="my-5">
+        <div class="container">
+            <h3 class="title">Customer</h3>
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <input type="text" class="form-control" @bind="model.FirstName" placeholder="First name" id="firstname" />
+                </div>
+                <div class="col-md-6 mb-3">
+                    <input type="text" class="form-control" @bind="model.LastName" placeholder="Last name" id="lastname" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <input type="email" class="form-control" @bind="model.Email" placeholder="Email adress" id="email" />
+                </div>
+            </div>
+            <button class="btn btn-dark btn-block" type="submit">Submit</button>
+
+        </div>
+    </div>
+</EditForm>
+
+
+
+@code { 
+    private Customer model;
+
+
+
+    protected override void OnInitialized()
+    {
+        model = new Customer();
+    }
+
+
+
+    private async Task CreateCustomerAsync()
+    {
+        Http.DefaultRequestHeaders.Add("Authorization", $"Bearer {await sessionStorage.GetItemAsync<string>("accessToken")}");
+        var response = await Http.PostAsJsonAsync<Customer>("https://localhost:44395/api/Customers", model);
+        model = new Customer();
+
+
+
+    } }

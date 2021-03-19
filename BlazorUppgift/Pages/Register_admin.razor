@@ -1,0 +1,53 @@
+﻿@page "/register"
+
+
+<h2 class="mb-5">Please register here</h2>
+
+
+<EditForm Model="model" OnValidSubmit="CreateAdminAsync">
+    <div class="my-5">
+        <div class="container">
+                <h3 class="title">Administrator</h3>
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <input type="text" class="form-control" @bind="model.FirstName" placeholder="First name" id="firstname" />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <input type="text" class="form-control" @bind="model.LastName" placeholder="Last name" id="lastname" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <input type="email" class="form-control" @bind="model.Email" placeholder="Email adress" id="email" />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <input type="password" class="form-control" @bind="model.Password" placeholder="Password" id="password" />
+                    </div>
+                </div>
+                <button class="btn btn-dark btn-block" type="submit">Submit</button>
+        </div>
+    </div>
+</EditForm>
+
+
+@code {
+    private Register model;
+
+    protected override void OnInitialized()
+    {
+        model = new Register();
+    }
+
+
+
+    private async Task CreateAdminAsync()
+    {
+        var response = await Http.PostAsJsonAsync<Register>("https://localhost:44395/api/Admins/register", model);
+        model = new Register();
+
+        //await sessionStorage.SetItemAsync<string>("auth", await response.Content.ReadAsStringAsync());
+        NavManager.NavigateTo("/login");
+    }
+
+
+}

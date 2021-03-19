@@ -1,0 +1,43 @@
+﻿@page "/login"
+
+<h2 class="mb-5">Please login here</h2>
+
+<EditForm Model="model" OnValidSubmit="OnSubmit">
+    <div class="my-5">
+        <div class="container">
+            <h3 class="mb-5 text-center">Login</h3>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <InputText type="email" class="form-control" @bind-Value="model.Email" placeholder="Email adress" id="email" />
+                </div>
+                <div class="col-md-6 mb-3">
+                    <InputText type="password" class="form-control" @bind-Value="model.Password" placeholder="Password" id="password" />
+                </div>
+            </div>
+            <button class="btn btn-dark btn-block" type="submit">Submit</button>
+        </div>
+    </div>
+</EditForm>
+
+
+@code {private LogIn model;
+
+
+
+            protected override void OnInitialized()
+            {
+                model = new LogIn();
+            }
+
+
+            private async Task OnSubmit()
+            {
+                var response = await Http.PostAsJsonAsync<LogIn>("https://localhost:44395/api/Admins/login", model);
+
+    @if (response.IsSuccessStatusCode)
+    {
+        var data = JsonConvert.DeserializeObject<dynamic>(await response.Content.ReadAsStringAsync());
+        await sessionStorage.SetItemAsync<string>("accessToken", data.accessToken.ToString());
+        NavManager.NavigateTo("/");
+    }}
+}

@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31105.61
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UppgiftWebApi", "UppgiftWebApi\UppgiftWebApi.csproj", "{49167FC4-2785-491A-8E66-C1F2A67C205F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UppgiftWebApi", "UppgiftWebApi\UppgiftWebApi.csproj", "{49167FC4-2785-491A-8E66-C1F2A67C205F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorUppgift", "BlazorUppgift\BlazorUppgift.csproj", "{C2CEC6B4-D12E-465D-A7F2-42F8D9A87C0B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedLibrary", "SharedLibrary\SharedLibrary.csproj", "{41E8D439-384D-4ED2-AC1C-C15276C20171}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{49167FC4-2785-491A-8E66-C1F2A67C205F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49167FC4-2785-491A-8E66-C1F2A67C205F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49167FC4-2785-491A-8E66-C1F2A67C205F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2CEC6B4-D12E-465D-A7F2-42F8D9A87C0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2CEC6B4-D12E-465D-A7F2-42F8D9A87C0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2CEC6B4-D12E-465D-A7F2-42F8D9A87C0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2CEC6B4-D12E-465D-A7F2-42F8D9A87C0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41E8D439-384D-4ED2-AC1C-C15276C20171}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41E8D439-384D-4ED2-AC1C-C15276C20171}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41E8D439-384D-4ED2-AC1C-C15276C20171}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41E8D439-384D-4ED2-AC1C-C15276C20171}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

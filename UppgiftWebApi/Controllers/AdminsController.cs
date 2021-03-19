@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using UppgiftWebApi.Models;
+using SharedLibrary;
 using UppgiftWebApi.Services;
 
 namespace UppgiftWebApi.Controllers

@@ -1,0 +1,19 @@
+﻿
+@code {
+
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        var Token = await sessionStorage.GetItemAsync<string>("accessToken");
+   
+
+        @if(Token == null)
+        {
+            NavManager.NavigateTo("/login");
+        }
+        
+
+
+    }
+}

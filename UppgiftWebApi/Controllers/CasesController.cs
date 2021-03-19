@@ -29,7 +29,7 @@ namespace UppgiftWebApi.Controllers
         {
             return await _context.Cases.ToListAsync();
         }
-
+     
         // GET: api/Cases/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Case>> GetCase(int id)
@@ -44,6 +44,7 @@ namespace UppgiftWebApi.Controllers
             return @case;
         }
 
+        // GET: api/Cases/status
         [HttpGet("status")]
         public async Task<ActionResult<IEnumerable<Case>>> GetCaseStatus(string status)
         {
@@ -59,7 +60,7 @@ namespace UppgiftWebApi.Controllers
         [HttpGet("date")]
         public async Task<ActionResult<IEnumerable<Case>>> GetCaseDate(DateTime date)
         {
-            var @case = await _context.Cases.Where(x => x.CaseDate == date).ToListAsync();
+            var @case = await _context.Cases.OrderBy(x => x.CaseDate <= date).ToListAsync();
 
             if (@case == null)
             {

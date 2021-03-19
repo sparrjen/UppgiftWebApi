@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UppgiftWebApi.Data;
 using UppgiftWebApi.Entities;
-using UppgiftWebApi.Models;
+using SharedLibrary;
 
 namespace UppgiftWebApi.Services
 {
